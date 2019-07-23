@@ -1,0 +1,95 @@
+John Stanton Abrams
+RUID 165001191
+Date: 12/4/2015
+Blackjack Milestone #3
+
+I'd like to apologize for the incompleteness of my
+previous deliverables for this project. I will begin
+by noting that this deliverable itself is incomplete,
+as my code doesn't account for "Splitting."
+
+My Blackjack file is approximately 2,000 lines of code;
+this is because I - regretfully - neglected to employ
+external classes and internal methods other than
+Card.java, Deck.java, IO.java, and a method I named
+"advice" takes the first two initial cards of each 
+player as its parameters, and returns a String that
+advises the player to either Hit, Stand, or Double down 
+(if he/she can). In the future, I will certainly
+utilize Classes, Objects, and Methods more frequently
+as I'm certain they would have significantly simplified 
+the debugging process.
+
+By far, the biggest lesson I learned from this project
+(my first of the sort) is to always make sure that my
+multi-lined if statements are properly bracketed. I 
+learned the hard way (by staring at my code for the
+better part of an hour trying to figure out why it
+wasn't working) that the things eclipse yells are not
+hyper-specific.
+
+My algorithms regarding Insurance, Doubling down,
+and Hinting are as follows:
+
+
+INSURANCE
+
+I created a field of type double within Blackjack.java
+for each of the participants in the game, excluding the
+dealer. When the dealer's first card (the one face up)
+is an ace, each player is asked whether or not they would
+like to take insurance. A series of while loops and if 
+statements are then triggered, ensuring that the input
+is sufficient. Consequently, each field is either
+populated with the amount the player would like to 
+spend on insurance (no more than either half of the 
+original bet or their current balance), or is left at its
+initial 0.0. As soon as the dealer's second card is 
+revealed, the players that purchased insurance are
+notified as to the fate of said purchase. These
+conclusions are then reflected in the final balance
+updates at the end of each round.
+
+
+DOUBLING DOWN
+
+For the purposes of my game, I have restricted doubling
+down to 100% of the initial bet. I did not have to
+create any fields in order to do this. I essentially
+modified the section devoted to taking each player to
+their respective "Hit/Stand/Bust" conclusion to allow
+for the decision to "Double down." I modified the while
+loop that allows for players to continue hitting, by 
+creating a new local variable that tracks when a player
+has chosen to double down, and moves on to the next
+player after they have completed their turn. The
+"double down" portion of code itself is very similar to
+the "hit" portion of code, except that upon choosing to
+double down an amount equivalent to the player's initial
+bet is subtracted from the players balance (if their
+balance cannot support this, the player is told to either
+stand or hit). The variable tracking their initial bet
+is then doubled, and used in the calculation of the
+player's final balance at the end of the round.
+
+
+HINTING
+
+My hint system is very crude. As I stated earlier, I
+avoided a Splitting system. This inherently took away
+from the usefulness of the Decision Table I hard-coded
+into Blackjack.java as a method. These Decision Tables
+are meant to occasionally suggest that a player Split,
+but since this functionality is absent from my program,
+my method returns "null" for these instances and they
+are consequently ignored. Thus, upon being initially 
+asked to either hit, stand, or double down, a hint is
+provided via the method. As such, each player only
+receives one of these hints per round. The only other
+hints that players will receive throughout the round
+are those which guide the basic flow of the game: 
+"Enter a positive value as your wager," "Doubling down
+pays out 2-1," et cetera. Setting up the else if
+statement was a bit tricky, with regards to minimizing
+the amount of typing involved, but other than that it
+was fairly straightforward.
